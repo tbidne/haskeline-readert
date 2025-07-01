@@ -1,0 +1,7 @@
+cradle:
+  cabal:
+    - path: "./src"
+      component: "lib:haskeline-readert"
+
+    - path: "./app/Main.hs"
+      component: "haskeline-readert:exe:haskeline-readert"

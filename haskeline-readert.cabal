@@ -1,0 +1,65 @@
+cabal-version: 2.4
+name:          haskeline-readert
+version:       0.1
+license:       MIT
+license-file:  LICENSE
+copyright:     2025 Thomas Bidne
+author:        Thomas Bidne
+maintainer:    tbidne@protonmail.com
+homepage:      https://github.com/tbidne/haskeline-readert/
+bug-reports:   https://github.com/tbidne/haskeline-readert/issues
+
+source-repository head
+  type:     git
+  location: https://github.com/tbidne/haskeline-readert
+
+common common-lang
+  default-extensions:
+    DataKinds
+    DeriveFunctor
+    DerivingStrategies
+    DerivingVia
+    ExplicitForAll
+    ExplicitNamespaces
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    ImportQualifiedPost
+    LambdaCase
+    RankNTypes
+    StandaloneDeriving
+    StandaloneKindSignatures
+    TypeFamilies
+    TypeOperators
+
+  default-language:   Haskell2010
+
+library
+  import:          common-lang
+  exposed-modules:
+    Haskeline.Bluefin.Dynamic
+    Haskeline.Bluefin.Static
+    Haskeline.Class
+    Haskeline.Effectful.Dynamic
+    Haskeline.Effectful.Static
+
+  build-depends:
+    , base            >=4.14.0.0  && <4.22
+    , bluefin         ^>=0.0.16.0
+    , effectful-core  >=2.5.0.0   && <2.6
+    , exceptions      ^>=0.10.4
+    , haskeline       ^>=0.8.3.0
+    , mtl             >=2.2.1     && <2.4
+
+  hs-source-dirs:  src
+
+executable haskeline-readert
+  import:         common-lang
+  main-is:        Main.hs
+  build-depends:
+    , base
+    , haskeline-readert
+
+  hs-source-dirs: app
+  ghc-options:    -threaded -with-rtsopts=-N
